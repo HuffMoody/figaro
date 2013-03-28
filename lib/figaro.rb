@@ -5,9 +5,9 @@ require "figaro/railtie" if defined?(Rails)
 module Figaro
   extend self
 
-  def configure(configuration_file_path = nil)
+  def configure(configuration_file_path = nil, custom_environment = nil)
     @path = configuration_file_path unless configuration_file_path.nil?
-    ENV.update(Figaro.env)
+    ENV.update(Figaro.env(custom_environment))
   end
 
   def vars(custom_environment = nil)
